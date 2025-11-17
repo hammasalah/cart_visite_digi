@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMAS Group - Elite Tech Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #00f5d4;
+            --secondary: #9b5de5;
+            --accent: #f15bb5;
+            --dark: #0a0a0a;
+            --light: #f8f9fa;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glow: 0 0 15px rgba(0, 245, 212, 0.5);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 40px;
+            min-height: 600px;
+        }
+
+        .team-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .team-member:hover::before {
+            left: 100%;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            border-color: var(--primary);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-avatar img {
+            transform: scale(1.1);
+        }
+
+        .member-avatar::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover .member-avatar::after {
+            opacity: 1;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .member-role {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .member-initials {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .profile-section {
+            flex: 2;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-height: 650px;
+        }
+
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .default-profile {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .default-profile h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .default-profile p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-item {
+            background: rgba(0, 245, 212, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 245, 212, 0.3);
+        }
+
+        .member-profile {
+            display: none;
+        }
+
+        .profile-active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 25px;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .profile-info .role {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .profile-info .quote {
+            font-style: italic;
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .skills-section, .bio-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: rgba(155, 93, 229, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: rgba(155, 93, 229, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .bio-text {
+            line-height: 1.7;
+            color: #b0b0b0;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 245, 212, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--light);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 245, 212, 0.3);
+        }
+
+        .contact-btn:hover {
+            background: rgba(0, 245, 212, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(2) {
+            background: var(--secondary);
+            width: 15px;
+            height: 15px;
+            top: 20%;
+            left: 80%;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(3) {
+            background: var(--accent);
+            width: 8px;
+            height: 8px;
+            top: 60%;
+            left: 10%;
+            animation-duration: 25s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(100px, 100px) rotate(360deg);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HAMAS Group</h1>
+            <p>We build full-stack web applications with cutting-edge technologies and deliver AI solutions that drive intelligent outcomes for modern businesses.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="team-section">
+                <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 10px;">Our Elite Team</h2>
+                <p style="color: #b0b0b0; margin-bottom: 20px;">Click on a team member to view their profile</p>
+                
+                <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-member" onclick="showProfile('mayssem')">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mayssem Mufty">
+                        </div>
+                        <h3 class="member-name">Mayssem Mufty</h3>
+                        <p class="member-role">Full-Stack Developer</p>
+                        <div class="member-initials">M</div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-member" onclick="showProfile('oussama')">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Oussama Mabrouk">
+                        </div>
+                        <h3 class="member-name">Oussama Mabrouk</h3>
+                        <p class="member-role">AI/Data Scientist</p>
+                        <div class="member-initials">O</div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-member" onclick="showProfile('haykel')">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Haykel Barkaoui">
+                        </div>
+                        <h3 class="member-name">Haykel Barkaoui</h3>
+                        <p class="member-role">Backend Developer</p>
+                        <div class="member-initials">H</div>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="team-member" onclick="showProfile('mohamed')">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mohamed Salah Saoudi">
+                        </div>
+                        <h3 class="member-name">Mohamed Salah</h3>
+                        <p class="member-role">Frontend Developer</p>
+                        <div class="member-initials">M</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="floating-elements">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                </div>
+                
+                <!-- Default Profile View -->
+                <div class="default-profile" id="default-profile">
+                    <h2>Welcome to HAMAS Group</h2>
+                    <p>We are a team of passionate developers and data scientists dedicated to creating innovative solutions that push the boundaries of technology. Our expertise spans across full-stack development, AI, and data science.</p>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-item">Angular</div>
+                        <div class="tech-item">Next.js</div>
+                        <div class="tech-item">Symfony</div>
+                        <div class="tech-item">Spring Boot</div>
+                        <div class="tech-item">Django</div>
+                        <div class="tech-item">AI Solutions</div>
+                        <div class="tech-item">Data Science</div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px;">Contact Us</h3>
+                        <p style="color: #b0b0b0; margin-bottom: 10px;">📧 contact@hamasgroup.com</p>
+                        <p style="color: #b0b0b0; margin-bottom: 10px;">📱 53 512 280</p>
+                        <p style="color: #b0b0b0; margin-bottom: 10px;">🌐 www.hamasgroup.com</p>
+                        <p style="color: #b0b0b0;">📍 123 Business Street, City, Country</p>
+                    </div>
+                </div>
+                
+                <!-- Mayssem Profile -->
+                <div class="member-profile" id="mayssem-profile">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mayssem Mufty">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Mayssem Mufty</h2>
+                            <p class="role">Full-Stack Developer</p>
+                            <p class="quote">"Building bridges between ideas and execution"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="skills-section">
+                            <h3 class="section-title"><i class="fas fa-code"></i> Technical Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill">Angular</div>
+                                <div class="skill">Next.js</div>
+                                <div class="skill">Symfony</div>
+                                <div class="skill">Spring Boot</div>
+                                <div class="skill">Django</div>
+                                <div class="skill">React</div>
+                                <div class="skill">Node.js</div>
+                                <div class="skill">MongoDB</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bio-section">
+                            <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
+                            <p class="bio-text">Mayssem specializes in creating seamless, full-stack applications that bridge the gap between frontend aesthetics and backend functionality. With 7+ years of experience, he delivers robust, scalable solutions for modern businesses.</p>
+                            
+                            <div class="contact-info">
+                                <a href="mailto:mayssem@hamasgroup.com" class="contact-btn">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <a href="#" class="contact-btn">
+                                    <i class="fas fa-briefcase"></i> Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oussama Profile -->
+                <div class="member-profile" id="oussama-profile">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Oussama Mabrouk">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Oussama Mabrouk</h2>
+                            <p class="role">AI/Data Scientist</p>
+                            <p class="quote">"Transforming data into intelligent decisions"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="skills-section">
+                            <h3 class="section-title"><i class="fas fa-brain"></i> Technical Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill">Machine Learning</div>
+                                <div class="skill">Deep Learning</div>
+                                <div class="skill">Python</div>
+                                <div class="skill">TensorFlow</div>
+                                <div class="skill">PyTorch</div>
+                                <div class="skill">Data Analysis</div>
+                                <div class="skill">NLP</div>
+                                <div class="skill">Computer Vision</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bio-section">
+                            <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
+                            <p class="bio-text">Oussama transforms complex data into actionable insights and intelligent systems. His expertise in AI and machine learning helps businesses leverage data for competitive advantage and innovation.</p>
+                            
+                            <div class="contact-info">
+                                <a href="mailto:oussama@hamasgroup.com" class="contact-btn">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <a href="#" class="contact-btn">
+                                    <i class="fas fa-briefcase"></i> Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Haykel Profile -->
+                <div class="member-profile" id="haykel-profile">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Haykel Barkaoui">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Haykel Barkaoui</h2>
+                            <p class="role">Backend Developer</p>
+                            <p class="quote">"Architecting the foundation of digital innovation"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="skills-section">
+                            <h3 class="section-title"><i class="fas fa-server"></i> Technical Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill">Java</div>
+                                <div class="skill">Spring Boot</div>
+                                <div class="skill">Python</div>
+                                <div class="skill">Django</div>
+                                <div class="skill">PostgreSQL</div>
+                                <div class="skill">Redis</div>
+                                <div class="skill">Docker</div>
+                                <div class="skill">AWS</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bio-section">
+                            <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
+                            <p class="bio-text">Haykel architects and builds powerful, scalable backend systems that form the foundation of digital products. His focus on performance, security, and maintainability ensures reliable operations.</p>
+                            
+                            <div class="contact-info">
+                                <a href="mailto:haykel@hamasgroup.com" class="contact-btn">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <a href="#" class="contact-btn">
+                                    <i class="fas fa-briefcase"></i> Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mohamed Profile -->
+                <div class="member-profile" id="mohamed-profile">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mohamed Salah Saoudi">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Mohamed Salah Saoudi</h2>
+                            <p class="role">Frontend Developer</p>
+                            <p class="quote">"Crafting experiences that users love"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="skills-section">
+                            <h3 class="section-title"><i class="fas fa-paint-brush"></i> Technical Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill">React</div>
+                                <div class="skill">Vue.js</div>
+                                <div class="skill">Angular</div>
+                                <div class="skill">TypeScript</div>
+                                <div class="skill">SASS</div>
+                                <div class="skill">UI/UX Design</div>
+                                <div class="skill">Responsive Design</div>
+                                <div class="skill">Web Performance</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bio-section">
+                            <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
+                            <p class="bio-text">Mohamed crafts beautiful, intuitive interfaces that provide exceptional user experiences. His attention to detail and understanding of user psychology result in interfaces that are both functional and delightful.</p>
+                            
+                            <div class="contact-info">
+                                <a href="mailto:mohamed@hamasgroup.com" class="contact-btn">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <a href="#" class="contact-btn">
+                                    <i class="fas fa-briefcase"></i> Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Let's Connect & Grow Together</p>
+        </div>
+    </div>
+
+    <script>
+        function showProfile(member) {
+            // Hide all profiles
+            document.querySelectorAll('.member-profile').forEach(profile => {
+                profile.classList.remove('profile-active');
+            });
+            
+            // Hide default profile
+            document.getElementById('default-profile').style.display = 'none';
+            
+            // Show selected profile
+            document.getElementById(member + '-profile').classList.add('profile-active');
+            
+            // Add active state to team member
+            document.querySelectorAll('.team-member').forEach(memberEl => {
+                memberEl.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                memberEl.style.boxShadow = 'none';
+            });
+            
+            event.currentTarget.style.borderColor = 'var(--primary)';
+            event.currentTarget.style.boxShadow = 'var(--glow)';
+        }
+        
+        // Initialize with default profile
+        document.getElementById('default-profile').style.display = 'flex';
+    </script>
+</body>
+</html>
