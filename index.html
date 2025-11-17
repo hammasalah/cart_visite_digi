@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="shape1"></div>
+    <div class="shape2"></div>
+    <div class="shape3"></div>
     <div class="container">
         <div class="business-card">
             <div class="card-header">
@@ -20,9 +23,11 @@
                 <p class="tagline">Professional Business Solutions</p>
                 
                 <div class="description">
-                    <p>🚀 <strong>Full-Stack Development:</strong> Angular, Next.js, Symfony, Spring Boot, Django<br>
-                    🤖 <strong>AI & Data Science:</strong> Intelligent solutions for modern businesses<br>
-                    💻 <strong>Front-End & Back-End:</strong> Complete digital transformation</p>
+                    <p> <strong>Our team builds full-stack web applications with 
+                        Angular, Next.js, Symfony, Spring Boot, and Django,
+                         and delivers AI and data-science solutions that drive
+                          intelligent outcomes for modern businesses.
+</strong> </p>
                 </div>
                 
                 <div class="divider"></div>
@@ -35,7 +40,7 @@
                     
                     <div class="info-item">
                         <span class="icon">📱</span>
-                        <span class="text">+1 (555) 123-4567</span>
+                        <span class="text">53 512 280</span>
                     </div>
                     
                     <div class="info-item">
@@ -80,6 +85,96 @@
                 <p>Let's Connect & Grow Together</p>
             </div>
         </div>
+        
+        <!-- Member Cards -->
+        <div class="members-container">
+            <!-- Member 1: Mayssem Mufty -->
+            <div class="member-card">
+                <div class="member-avatar">M</div>
+                <h3 class="member-name">Mayssem Mufty</h3>
+                <p class="member-role">Full-Stack Developer</p>
+                <div class="member-social">
+                    <a href="#" class="member-social-icon">📧</a>
+                    <a href="#" class="member-social-icon">💼</a>
+                    <a href="#" class="member-social-icon">📱</a>
+                </div>
+            </div>
+            
+            <!-- Member 2: Oussama Mabrouk -->
+            <div class="member-card">
+                <div class="member-avatar">O</div>
+                <h3 class="member-name">Oussama Mabrouk</h3>
+                <p class="member-role">AI/Data Scientist</p>
+                <div class="member-social">
+                    <a href="#" class="member-social-icon">📧</a>
+                    <a href="#" class="member-social-icon">💼</a>
+                    <a href="#" class="member-social-icon">📱</a>
+                </div>
+            </div>
+            
+            <!-- Member 3: Haykel Barkaoui -->
+            <div class="member-card">
+                <div class="member-avatar">H</div>
+                <h3 class="member-name">Haykel Barkaoui</h3>
+                <p class="member-role">Backend Developer</p>
+                <div class="member-social">
+                    <a href="#" class="member-social-icon">📧</a>
+                    <a href="#" class="member-social-icon">💼</a>
+                    <a href="#" class="member-social-icon">📱</a>
+                </div>
+            </div>
+            
+            <!-- Member 4: Mohamed Salah Saoudi -->
+            <div class="member-card">
+                <div class="member-avatar">M</div>
+                <h3 class="member-name">Mohamed Salah Saoudi</h3>
+                <p class="member-role">Frontend Developer</p>
+                <div class="member-social">
+                    <a href="#" class="member-social-icon">📧</a>
+                    <a href="#" class="member-social-icon">💼</a>
+                    <a href="#" class="member-social-icon">📱</a>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        // Scroll-based animation for member cards
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const card = entry.target;
+                const ratio = entry.intersectionRatio;
+                
+                if (ratio > 0) {
+                    // Calculate zoom and opacity based on intersection ratio
+                    const scale = 0.7 + (ratio * 0.3); // Scale from 0.7 to 1
+                    const opacity = ratio; // Opacity from 0 to 1
+                    
+                    card.style.transform = `scale(${scale}) translateY(${(1 - ratio) * 50}px)`;
+                    card.style.opacity = opacity;
+                } else {
+                    card.style.transform = 'scale(0.7) translateY(50px)';
+                    card.style.opacity = '0';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all member cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const memberCards = document.querySelectorAll('.member-card');
+            memberCards.forEach(card => {
+                card.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+                card.style.transform = 'scale(0.7) translateY(50px)';
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
