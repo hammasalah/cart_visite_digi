@@ -53,6 +53,42 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            margin-left: -80px;
+        }
+
+        .logo-placeholder {
+            width: 220px;
+            height: 220px;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            box-shadow: none;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
         .header h1 {
             font-size: 4rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -133,6 +169,12 @@
             border: 3px solid var(--primary);
             overflow: hidden;
             position: relative;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.9rem;
         }
 
         .member-avatar img {
@@ -284,6 +326,11 @@
             overflow: hidden;
             border: 3px solid var(--primary);
             flex-shrink: 0;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
         }
 
         .profile-avatar img {
@@ -444,6 +491,98 @@
             font-size: 1rem;
         }
 
+        /* NEW STYLES */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            color: var(--light);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 245, 212, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .active-member {
+            border-color: var(--primary) !important;
+            box-shadow: var(--glow) !important;
+        }
+
+        .fun-fact {
+            background: rgba(241, 91, 181, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .fun-fact h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 245, 212, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .achievements {
+            margin-top: 15px;
+        }
+
+        .secret-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 245, 212, 0.9);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 100;
+        }
+
+        .secret-message.show {
+            opacity: 1;
+        }
+
+        .special-power {
+            background: rgba(155, 93, 229, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px dashed var(--secondary);
+        }
+
+        .special-power h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
         @media (max-width: 1100px) {
             .main-content {
                 flex-direction: column;
@@ -487,7 +626,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>HAMAS Group</h1>
+            <div class="header-title-container">
+                <div class="logo-placeholder">
+                    <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\logo.jpg" alt="Fourth Dimension Logo">
+                </div>
+                <h1>Fourth Dimension</h1>
+            </div>
+            <p style="font-size: 1.1rem; color: #00f5d4; margin-bottom: 10px; font-weight: 500;">Engineering beyond the limits of three dimensions</p>
             <p>We build full-stack web applications with cutting-edge technologies and deliver AI solutions that drive intelligent outcomes for modern businesses.</p>
         </div>
 
@@ -500,17 +645,17 @@
                     <!-- Team Member 1 -->
                     <div class="team-member" onclick="showProfile('mayssem')">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mayssem Mufty">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\mayssem.jpg" alt="Mayssem Mufty" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
                         </div>
                         <h3 class="member-name">Mayssem Mufty</h3>
-                        <p class="member-role">Full-Stack Developer</p>
+                        <p class="member-role">AI/Data Scientist</p>
                         <div class="member-initials">M</div>
                     </div>
                     
                     <!-- Team Member 2 -->
                     <div class="team-member" onclick="showProfile('oussama')">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Oussama Mabrouk">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\oussama.jpg" alt="Oussama Mabrouk" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
                         </div>
                         <h3 class="member-name">Oussama Mabrouk</h3>
                         <p class="member-role">AI/Data Scientist</p>
@@ -520,20 +665,20 @@
                     <!-- Team Member 3 -->
                     <div class="team-member" onclick="showProfile('haykel')">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Haykel Barkaoui">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\haykel.png" alt="Haykel Barkaoui" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
                         </div>
                         <h3 class="member-name">Haykel Barkaoui</h3>
-                        <p class="member-role">Backend Developer</p>
+                        <p class="member-role">AI/Data Scientist</p>
                         <div class="member-initials">H</div>
                     </div>
                     
                     <!-- Team Member 4 -->
                     <div class="team-member" onclick="showProfile('mohamed')">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mohamed Salah Saoudi">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\hamma.jpg" alt="Mohamed Salah Saoudi" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
                         </div>
                         <h3 class="member-name">Mohamed Salah</h3>
-                        <p class="member-role">Frontend Developer</p>
+                        <p class="member-role">AI/Data Scientist</p>
                         <div class="member-initials">M</div>
                     </div>
                 </div>
@@ -544,6 +689,11 @@
                     <div class="floating-element"></div>
                     <div class="floating-element"></div>
                     <div class="floating-element"></div>
+                </div>
+                
+                <!-- Back Button -->
+                <div class="back-btn" onclick="showDefault()" id="back-btn" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Back to Team
                 </div>
                 
                 <!-- Default Profile View -->
@@ -568,17 +718,22 @@
                         <p style="color: #b0b0b0; margin-bottom: 10px;">🌐 www.hamasgroup.com</p>
                         <p style="color: #b0b0b0;">📍 123 Business Street, City, Country</p>
                     </div>
+
+                    <!-- Easter Egg -->
+                    <div style="margin-top: 40px; text-align: center;">
+                        <p style="color: #b0b0b0; font-size: 0.9rem;">👻 Psst... Try clicking on each team member 3 times!</p>
+                    </div>
                 </div>
                 
                 <!-- Mayssem Profile -->
                 <div class="member-profile" id="mayssem-profile">
                     <div class="profile-header">
                         <div class="profile-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mayssem Mufty">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\mayssem.jpg" alt="Mayssem Mufty" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user fa-3x\'></i>';">
                         </div>
                         <div class="profile-info">
                             <h2>Mayssem Mufty</h2>
-                            <p class="role">Full-Stack Developer</p>
+                            <p class="role">AI/Data Scientist</p>
                             <p class="quote">"Building bridges between ideas and execution"</p>
                         </div>
                     </div>
@@ -596,11 +751,27 @@
                                 <div class="skill">Node.js</div>
                                 <div class="skill">MongoDB</div>
                             </div>
+
+                            <div class="special-power">
+                                <h4><i class="fas fa-bolt"></i> Special Power</h4>
+                                <p>Can debug complex issues with just one look at the code</p>
+                            </div>
                         </div>
                         
                         <div class="bio-section">
                             <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
                             <p class="bio-text">Mayssem specializes in creating seamless, full-stack applications that bridge the gap between frontend aesthetics and backend functionality. With 7+ years of experience, he delivers robust, scalable solutions for modern businesses.</p>
+                            
+                            <div class="fun-fact">
+                                <h4><i class="fas fa-lightbulb"></i> Fun Fact</h4>
+                                <p>Once built an entire e-commerce platform in 48 hours during a coding marathon.</p>
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+                                <div class="achievement-badge"><i class="fas fa-award"></i> Project of the Month</div>
+                                <div class="achievement-badge"><i class="fas fa-star"></i> Code Quality Champion</div>
+                            </div>
                             
                             <div class="contact-info">
                                 <a href="mailto:mayssem@hamasgroup.com" class="contact-btn">
@@ -618,7 +789,7 @@
                 <div class="member-profile" id="oussama-profile">
                     <div class="profile-header">
                         <div class="profile-avatar">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Oussama Mabrouk">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\oussama.jpg" alt="Oussama Mabrouk" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user fa-3x\'></i>';">
                         </div>
                         <div class="profile-info">
                             <h2>Oussama Mabrouk</h2>
@@ -640,11 +811,27 @@
                                 <div class="skill">NLP</div>
                                 <div class="skill">Computer Vision</div>
                             </div>
+
+                            <div class="special-power">
+                                <h4><i class="fas fa-bolt"></i> Special Power</h4>
+                                <p>Can predict project outcomes with 95% accuracy using data models</p>
+                            </div>
                         </div>
                         
                         <div class="bio-section">
                             <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
                             <p class="bio-text">Oussama transforms complex data into actionable insights and intelligent systems. His expertise in AI and machine learning helps businesses leverage data for competitive advantage and innovation.</p>
+                            
+                            <div class="fun-fact">
+                                <h4><i class="fas fa-lightbulb"></i> Fun Fact</h4>
+                                <p>Revolutionary drone system for precise rooftop detection and building classification".</p>
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+                                <div class="achievement-badge"><i class="fas fa-award"></i> Created GestCom – Winner of Bal de Projet 2025</div>
+                                <div class="achievement-badge"><i class="fas fa-chart-line"></i> Best PFE 2024 – Security System for Delivery Trucks</div>
+                            </div>
                             
                             <div class="contact-info">
                                 <a href="mailto:oussama@hamasgroup.com" class="contact-btn">
@@ -662,11 +849,11 @@
                 <div class="member-profile" id="haykel-profile">
                     <div class="profile-header">
                         <div class="profile-avatar">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Haykel Barkaoui">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\haykel.png" alt="Haykel Barkaoui" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user fa-3x\'></i>';">
                         </div>
                         <div class="profile-info">
                             <h2>Haykel Barkaoui</h2>
-                            <p class="role">Backend Developer</p>
+                            <p class="role">AI/Data Scientist</p>
                             <p class="quote">"Architecting the foundation of digital innovation"</p>
                         </div>
                     </div>
@@ -684,11 +871,27 @@
                                 <div class="skill">Docker</div>
                                 <div class="skill">AWS</div>
                             </div>
+
+                            <div class="special-power">
+                                <h4><i class="fas fa-bolt"></i> Special Power</h4>
+                                <p>Can optimize database queries to run 10x faster than before</p>
+                            </div>
                         </div>
                         
                         <div class="bio-section">
                             <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
                             <p class="bio-text">Haykel architects and builds powerful, scalable backend systems that form the foundation of digital products. His focus on performance, security, and maintainability ensures reliable operations.</p>
+                            
+                            <div class="fun-fact">
+                                <h4><i class="fas fa-lightbulb"></i> Fun Fact</h4>
+                                <p>Once fixed a critical production bug while skydiving (with a satellite connection).</p>
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+                                <div class="achievement-badge"><i class="fas fa-award"></i> System Architecture Excellence</div>
+                                <div class="achievement-badge"><i class="fas fa-shield-alt"></i> Security Implementation</div>
+                            </div>
                             
                             <div class="contact-info">
                                 <a href="mailto:haykel@hamasgroup.com" class="contact-btn">
@@ -706,11 +909,11 @@
                 <div class="member-profile" id="mohamed-profile">
                     <div class="profile-header">
                         <div class="profile-avatar">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mohamed Salah Saoudi">
+                            <img src="C:\Users\moame\OneDrive\Desktop\cart_visite_digi\img\hamma.jpg" alt="Mohamed Salah Saoudi" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user fa-3x\'></i>';">
                         </div>
                         <div class="profile-info">
                             <h2>Mohamed Salah Saoudi</h2>
-                            <p class="role">Frontend Developer</p>
+                            <p class="role">AI/Data Scientist</p>
                             <p class="quote">"Crafting experiences that users love"</p>
                         </div>
                     </div>
@@ -728,11 +931,27 @@
                                 <div class="skill">Responsive Design</div>
                                 <div class="skill">Web Performance</div>
                             </div>
+
+                            <div class="special-power">
+                                <h4><i class="fas fa-bolt"></i> Special Power</h4>
+                                <p>Can create pixel-perfect designs that work flawlessly across all browsers</p>
+                            </div>
                         </div>
                         
                         <div class="bio-section">
                             <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
                             <p class="bio-text">Mohamed crafts beautiful, intuitive interfaces that provide exceptional user experiences. His attention to detail and understanding of user psychology result in interfaces that are both functional and delightful.</p>
+                            
+                            <div class="fun-fact">
+                                <h4><i class="fas fa-lightbulb"></i> Fun Fact</h4>
+                                <p>Designed and coded his first website at age 12, and it's still running today.</p>
+                            </div>
+                            
+                            <div class="achievements">
+                                <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+                                <div class="achievement-badge"><i class="fas fa-award"></i> UI/UX Excellence</div>
+                                <div class="achievement-badge"><i class="fas fa-mobile-alt"></i> Mobile First Design</div>
+                            </div>
                             
                             <div class="contact-info">
                                 <a href="mailto:mohamed@hamasgroup.com" class="contact-btn">
@@ -753,7 +972,19 @@
         </div>
     </div>
 
+    <!-- Secret Message -->
+    <div class="secret-message" id="secret-message">
+        You found the secret! 🎉 Team HAMAS rocks!
+    </div>
+
     <script>
+        let clickCounts = {
+            mayssem: 0,
+            oussama: 0,
+            haykel: 0,
+            mohamed: 0
+        };
+
         function showProfile(member) {
             // Hide all profiles
             document.querySelectorAll('.member-profile').forEach(profile => {
@@ -766,14 +997,49 @@
             // Show selected profile
             document.getElementById(member + '-profile').classList.add('profile-active');
             
+            // Show back button
+            document.getElementById('back-btn').style.display = 'flex';
+            
             // Add active state to team member
             document.querySelectorAll('.team-member').forEach(memberEl => {
-                memberEl.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                memberEl.style.boxShadow = 'none';
+                memberEl.classList.remove('active-member');
             });
             
-            event.currentTarget.style.borderColor = 'var(--primary)';
-            event.currentTarget.style.boxShadow = 'var(--glow)';
+            event.currentTarget.classList.add('active-member');
+
+            // Easter egg functionality
+            clickCounts[member]++;
+            if (clickCounts[member] === 3) {
+                showSecretMessage();
+                clickCounts[member] = 0; // Reset after showing message
+            }
+        }
+        
+        function showDefault() {
+            // Hide all profiles
+            document.querySelectorAll('.member-profile').forEach(profile => {
+                profile.classList.remove('profile-active');
+            });
+            
+            // Show default profile
+            document.getElementById('default-profile').style.display = 'flex';
+            
+            // Hide back button
+            document.getElementById('back-btn').style.display = 'none';
+            
+            // Remove active state from team members
+            document.querySelectorAll('.team-member').forEach(memberEl => {
+                memberEl.classList.remove('active-member');
+            });
+        }
+        
+        function showSecretMessage() {
+            const message = document.getElementById('secret-message');
+            message.classList.add('show');
+            
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
         }
         
         // Initialize with default profile
