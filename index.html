@@ -760,8 +760,18 @@
             .back-btn {
                 top: 10px;
                 right: 10px;
-                padding: 6px 10px;
-                font-size: 0.8rem;
+                padding: 8px;
+                font-size: 1rem;
+                width: auto;
+                min-width: auto;
+            }
+
+            .back-btn .back-text {
+                display: none;
+            }
+
+            .back-btn i {
+                margin: 0 !important;
             }
         }
 
@@ -922,7 +932,7 @@
                 
                 <!-- Back Button -->
                 <div class="back-btn" onclick="showDefault()" id="back-btn" style="display: none;">
-                    <i class="fas fa-arrow-left"></i> Back to Team
+                    <i class="fas fa-arrow-left"></i> <span class="back-text">Back to Team</span>
                 </div>
                 
                 <!-- Default Profile View -->
