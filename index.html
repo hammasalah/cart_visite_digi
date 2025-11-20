@@ -633,22 +633,60 @@
                 gap: 8px;
             }
             
+            .main-content {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .team-section {
+                flex: 0 0 30%;
+                max-width: 30%;
+            }
+
+            .team-section h2 {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .team-section > p {
+                font-size: 0.7rem;
+                margin-bottom: 10px;
+            }
+
+            .team-section > a.contact-btn {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+                margin-bottom: 10px;
+            }
+            
             .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-top: 15px;
+            }
+
+            .team-member {
+                padding: 10px 12px;
+                border-radius: 8px;
             }
 
             .member-avatar {
-                width: 100px;
-                height: 100px;
+                display: none;
             }
 
             .member-name {
-                font-size: 1.2rem;
+                font-size: 0.9rem;
+                margin-bottom: 2px;
             }
 
             .member-role {
-                font-size: 0.9rem;
+                font-size: 0.65rem;
+            }
+
+            .profile-section {
+                flex: 1;
+                padding: 20px;
+                min-height: 500px;
             }
             
             .profile-header {
@@ -656,37 +694,74 @@
                 text-align: center;
             }
 
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
             .profile-info h2 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
 
             .profile-info .role {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .profile-info .quote {
+                font-size: 0.85rem;
             }
             
             .profile-details {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .profile-section {
-                padding: 25px;
-                min-height: auto;
+            .skills-section, .bio-section {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+            }
+
+            .skill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
 
             .default-profile h2 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
 
             .default-profile p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .tech-stack {
+                gap: 8px;
+            }
+
+            .tech-item {
+                padding: 6px 12px;
+                font-size: 0.75rem;
             }
 
             .contact-info {
                 flex-direction: column;
+                gap: 10px;
             }
 
             .contact-btn {
                 justify-content: center;
+                font-size: 0.85rem;
+                padding: 8px 15px;
+            }
+
+            .back-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 10px;
+                font-size: 0.8rem;
             }
         }
 
